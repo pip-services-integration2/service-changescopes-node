@@ -5,7 +5,7 @@ import { ChangeScopesMongoDbPersistence } from '../persistence/ChangeScopesMongo
 import { ChangeScopesFilePersistence } from '../persistence/ChangeScopesFilePersistence';
 import { ChangeScopesMemoryPersistence } from '../persistence/ChangeScopesMemoryPersistence';
 import { ChangeScopesController } from '../logic/ChangeScopesController';
-import { ChangeScopesHttpServiceV1 } from '../services/version1/ChangeScopesHttpServiceV1';
+import { ChangeScopesCommandableHttpServiceV1 } from '../services/version1/ChangeScopesCommandableHttpServiceV1';
 
 export class ChangeScopesServiceFactory extends Factory {
 	public static Descriptor = new Descriptor("service-changescopes", "factory", "default", "default", "1.0");
@@ -13,7 +13,7 @@ export class ChangeScopesServiceFactory extends Factory {
 	public static FilePersistenceDescriptor = new Descriptor("service-changescopes", "persistence", "file", "*", "1.0");
 	public static MongoDbPersistenceDescriptor = new Descriptor("service-changescopes", "persistence", "mongodb", "*", "1.0");
 	public static ControllerDescriptor = new Descriptor("service-changescopes", "controller", "default", "*", "1.0");
-	public static HttpServiceDescriptor = new Descriptor("service-changescopes", "service", "http", "*", "1.0");
+	public static CmdHttpServiceDescriptor = new Descriptor("service-changescopes", "service", "commandable-http", "*", "1.0");
 	
 	constructor() {
 		super();
@@ -21,7 +21,7 @@ export class ChangeScopesServiceFactory extends Factory {
 		this.registerAsType(ChangeScopesServiceFactory.FilePersistenceDescriptor, ChangeScopesFilePersistence);
 		this.registerAsType(ChangeScopesServiceFactory.MongoDbPersistenceDescriptor, ChangeScopesMongoDbPersistence);
 		this.registerAsType(ChangeScopesServiceFactory.ControllerDescriptor, ChangeScopesController);
-		this.registerAsType(ChangeScopesServiceFactory.HttpServiceDescriptor, ChangeScopesHttpServiceV1);
+		this.registerAsType(ChangeScopesServiceFactory.CmdHttpServiceDescriptor, ChangeScopesCommandableHttpServiceV1);
 	}
 	
 }

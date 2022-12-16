@@ -7,7 +7,7 @@ const ChangeScopesMongoDbPersistence_1 = require("../persistence/ChangeScopesMon
 const ChangeScopesFilePersistence_1 = require("../persistence/ChangeScopesFilePersistence");
 const ChangeScopesMemoryPersistence_1 = require("../persistence/ChangeScopesMemoryPersistence");
 const ChangeScopesController_1 = require("../logic/ChangeScopesController");
-const ChangeScopesHttpServiceV1_1 = require("../services/version1/ChangeScopesHttpServiceV1");
+const ChangeScopesCommandableHttpServiceV1_1 = require("../services/version1/ChangeScopesCommandableHttpServiceV1");
 class ChangeScopesServiceFactory extends pip_services3_components_nodex_1.Factory {
     constructor() {
         super();
@@ -15,7 +15,7 @@ class ChangeScopesServiceFactory extends pip_services3_components_nodex_1.Factor
         this.registerAsType(ChangeScopesServiceFactory.FilePersistenceDescriptor, ChangeScopesFilePersistence_1.ChangeScopesFilePersistence);
         this.registerAsType(ChangeScopesServiceFactory.MongoDbPersistenceDescriptor, ChangeScopesMongoDbPersistence_1.ChangeScopesMongoDbPersistence);
         this.registerAsType(ChangeScopesServiceFactory.ControllerDescriptor, ChangeScopesController_1.ChangeScopesController);
-        this.registerAsType(ChangeScopesServiceFactory.HttpServiceDescriptor, ChangeScopesHttpServiceV1_1.ChangeScopesHttpServiceV1);
+        this.registerAsType(ChangeScopesServiceFactory.CmdHttpServiceDescriptor, ChangeScopesCommandableHttpServiceV1_1.ChangeScopesCommandableHttpServiceV1);
     }
 }
 exports.ChangeScopesServiceFactory = ChangeScopesServiceFactory;
@@ -24,5 +24,5 @@ ChangeScopesServiceFactory.MemoryPersistenceDescriptor = new pip_services3_commo
 ChangeScopesServiceFactory.FilePersistenceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-changescopes", "persistence", "file", "*", "1.0");
 ChangeScopesServiceFactory.MongoDbPersistenceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-changescopes", "persistence", "mongodb", "*", "1.0");
 ChangeScopesServiceFactory.ControllerDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-changescopes", "controller", "default", "*", "1.0");
-ChangeScopesServiceFactory.HttpServiceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-changescopes", "service", "http", "*", "1.0");
+ChangeScopesServiceFactory.CmdHttpServiceDescriptor = new pip_services3_commons_nodex_1.Descriptor("service-changescopes", "service", "commandable-http", "*", "1.0");
 //# sourceMappingURL=ChangeScopesServiceFactory.js.map

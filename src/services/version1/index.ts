@@ -1,1 +1,1 @@
-export { ChangeScopesHttpServiceV1 } from './ChangeScopesHttpServiceV1';
+export { ChangeScopesCommandableHttpServiceV1 as ChangeScopesHttpServiceV1 } from './ChangeScopesCommandableHttpServiceV1';

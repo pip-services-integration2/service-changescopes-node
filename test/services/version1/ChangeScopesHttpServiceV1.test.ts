@@ -8,7 +8,7 @@ import { References } from 'pip-services3-commons-nodex';
 import { ChangeScopeV1 } from '../../../src/data/version1/ChangeScopeV1';
 import { ChangeScopesMemoryPersistence } from '../../../src/persistence/ChangeScopesMemoryPersistence';
 import { ChangeScopesController } from '../../../src/logic/ChangeScopesController';
-import { ChangeScopesHttpServiceV1 } from '../../../src/services/version1/ChangeScopesHttpServiceV1';
+import { ChangeScopesCommandableHttpServiceV1 } from '../../../src/services/version1/ChangeScopesCommandableHttpServiceV1';
 
 let restConfig = ConfigParams.fromTuples(
     "connection.protocol", "http",
@@ -16,8 +16,8 @@ let restConfig = ConfigParams.fromTuples(
     "connection.port", 3000
 );
 
-suite('ChangeScopesHttpServiceV1', ()=> {
-    let service: ChangeScopesHttpServiceV1;
+suite('ChangeScopesCommandableHttpServiceV1', ()=> {
+    let service: ChangeScopesCommandableHttpServiceV1;
 
     let rest: any;
 
@@ -25,13 +25,13 @@ suite('ChangeScopesHttpServiceV1', ()=> {
         let persistence = new ChangeScopesMemoryPersistence();
         let controller = new ChangeScopesController();
 
-        service = new ChangeScopesHttpServiceV1();
+        service = new ChangeScopesCommandableHttpServiceV1();
         service.configure(restConfig);
 
         let references: References = References.fromTuples(
             new Descriptor('service-changescopes', 'persistence', 'memory', 'default', '1.0'), persistence,
             new Descriptor('service-changescopes', 'controller', 'default', 'default', '1.0'), controller,
-            new Descriptor('service-changescopes', 'service', 'http', 'default', '1.0'), service
+            new Descriptor('service-changescopes', 'service', 'commandable-http', 'default', '1.0'), service
         );
         controller.setReferences(references);
         service.setReferences(references);
